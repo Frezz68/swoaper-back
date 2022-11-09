@@ -1,6 +1,6 @@
 # Swoaper project
 
-## Développpeurs :
+## Dévelopeurs :
 
 Ryan
 Alan
