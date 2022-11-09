@@ -1,0 +1,5 @@
+/database/ddl_recovery-backup.log
+/database/ddl_recovery.log
+/database/ib_logfile0
+/database/ibtmp1
+/database/*
