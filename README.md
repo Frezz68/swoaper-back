@@ -9,6 +9,7 @@ Lucas
 ## Stacks :
 
 Backend - Symfony
+
 Frontend - ??
 
 Teaser page - VanillaJs
