@@ -1,0 +1,8 @@
+body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif!important;
+    background-color: #dfedf9;
+}
+.input-email {
+    width: 10%!important;
+}
