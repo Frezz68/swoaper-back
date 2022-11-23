@@ -8,3 +8,6 @@ acc240,127.0.0.1,GET,https://127.0.0.1:8000/,1668006930,,404
 aff4f7,127.0.0.1,GET,https://127.0.0.1:8000/,1668006951,,404
 057c1c,127.0.0.1,GET,https://127.0.0.1:8000/requestProvider.js.map,1668006954,110680,404
 110680,127.0.0.1,GET,https://127.0.0.1:8000/requestProvider.js.map,1668006954,,404
+3df746,172.22.0.1,GET,http://localhost/,1669194178,,404
+8056d0,172.22.0.1,GET,http://localhost/favicon.ico,1669194179,5fd7da,404
+5fd7da,172.22.0.1,GET,http://localhost/favicon.ico,1669194179,,404
