@@ -1,3 +1,7 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+landing_index:
+    path: /
+    controller: App\Controller\LandingPageController::index

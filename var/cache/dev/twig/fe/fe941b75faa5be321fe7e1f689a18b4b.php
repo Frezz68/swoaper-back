@@ -479,6 +479,6 @@ class __TwigTemplate_32a38214f341aa2ffecc8e51b618016b extends Template
         </div>
     {% endfor %}
 {% endblock %}
-", "@WebProfiler/Collector/validator.html.twig", "/Users/lucasprz/Desktop/swoaper/vendor/symfony/web-profiler-bundle/Resources/views/Collector/validator.html.twig");
+", "@WebProfiler/Collector/validator.html.twig", "/var/www/html/vendor/symfony/web-profiler-bundle/Resources/views/Collector/validator.html.twig");
     }
 }

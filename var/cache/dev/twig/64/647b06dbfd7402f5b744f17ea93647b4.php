@@ -330,6 +330,6 @@ class __TwigTemplate_4b219552ca764e9850d2dc4a42029cd5 extends Template
     {% endif %}
 
 {% endblock %}
-", "@WebProfiler/Profiler/results.html.twig", "/Users/lucasprz/Desktop/swoaper/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/results.html.twig");
+", "@WebProfiler/Profiler/results.html.twig", "/var/www/html/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/results.html.twig");
     }
 }
