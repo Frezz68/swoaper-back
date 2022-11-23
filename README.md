@@ -34,7 +34,7 @@ Utiliser cette commande pour installer l'environnement docker et directement le 
 docker-compose up -d
 ```
 
-### Installer les dépendances Composer
+### Installer les dépendances Composer dans la box swoaper-php ( en lançant le Cli )
 
 ```bash
 composer install
