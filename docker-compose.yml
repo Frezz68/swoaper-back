@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   php:
-    container_name: api
+    container_name: swoaper-php
     build:
       context: ./.docker/php/
       dockerfile: Dockerfile
@@ -35,7 +35,7 @@ services:
   #        - backend
 
   database:
-    container_name: api_database
+    container_name: swoaper-database
     image: postgres:${DB_VERSION}
     restart: always
     environment:
@@ -78,7 +78,7 @@ services:
   #        - 8080:80
 
   nginx:
-    container_name: api_proxy
+    container_name: swoaper-proxy
     image: nginx:alpine
     restart: always
     volumes:
