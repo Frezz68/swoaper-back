@@ -10,10 +10,7 @@ Lucas
 
 Backend - Symfony
 
-Frontend - ??
-
-Teaser page - VanillaJs
-
+Frontend - Twig / Tailwind
 
 ## Guide d'installation pour le développement
 
