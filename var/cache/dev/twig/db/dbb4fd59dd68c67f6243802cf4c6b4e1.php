@@ -174,6 +174,6 @@ class __TwigTemplate_51a20e6b7c96742f8131eb1f4084c215 extends Template
         {% endif %}
     </div>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "/Users/lucasprz/Desktop/swoaper/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "/var/www/html/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
     }
 }

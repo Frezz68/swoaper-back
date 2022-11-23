@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Swoaper{% endblock %}
+
+{% block body %}
+    <div class="h-screen w-screen bg-landing-background flex flex-col justify-center items-center">
+        <div class="flex justify-center items-center mb-4">
+            <img class="w-auto h-10" src="{{ asset('build/logo.png') }}" alt="">
+        </div>
+        <div class="h-100 flex flex-nowrap flex-row w-100">
+            <label>
+                <input class="font-light appearance-none rounded-l-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-r-4 border-landing-background" id="email" type="email" placeholder="Email">
+            </label>
+            <button type="button" class="font-light text-gray-700 rounded-r-lg appearance-none bg-white transition duration-300 ease-in-out hover:bg-black hover:text-white px-3">Valider</button>
+        </div>
+    </div>
+{% endblock %}
