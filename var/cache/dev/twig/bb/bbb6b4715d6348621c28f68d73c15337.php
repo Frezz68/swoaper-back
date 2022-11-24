@@ -900,6 +900,6 @@ class __TwigTemplate_c7be1f96d01290983a0318d7dd540878 extends Template
         {% endautoescape %}</script>
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/time.html.twig", "/Users/lucasprz/Desktop/swoaper/vendor/symfony/web-profiler-bundle/Resources/views/Collector/time.html.twig");
+", "@WebProfiler/Collector/time.html.twig", "/var/www/html/vendor/symfony/web-profiler-bundle/Resources/views/Collector/time.html.twig");
     }
 }
