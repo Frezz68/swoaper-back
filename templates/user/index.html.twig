@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Swoaper - login{% endblock %}
+
+{% block body %}
+    <div class="h-screen w-screen bg-landing-background flex flex-col justify-center items-center">
+        <div class="flex justify-center items-center mb-4">
+            <img class="w-auto h-10" src="{{ asset('build/logo.png') }}" alt="">
+        </div>
+        <div class="h-100 flex flex-nowrap flex-col w-100 justify-center items-center">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <p class="mb-4">Email: {{ app.user.email }}</p>
+
+                <a href="{{ path('app_logout_page') }}" class="font-medium text-white bg-dark-blue px-3 py-2 drop-shadow-lg color-white rounded-lg">Déconnexion</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
