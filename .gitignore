@@ -25,3 +25,5 @@ yarn-error.log
 ###< lexik/jwt-authentication-bundle ###
 
 /public/files/
+
+.env.local

@@ -1277,6 +1277,15 @@
             'reference' => '66c6b0cf52b00f74614a2cf7ae7db08ea1095931',
             'dev_requirement' => false,
         ),
+        'symfonycasts/verify-email-bundle' => array(
+            'pretty_version' => 'v1.13.0',
+            'version' => '1.13.0.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfonycasts/verify-email-bundle',
+            'aliases' => array(),
+            'reference' => 'eb7bc997f36ad872a0d56bf209fe37fed148b0a7',
+            'dev_requirement' => false,
+        ),
         'theseer/tokenizer' => array(
             'pretty_version' => '1.2.1',
             'version' => '1.2.1.0',
