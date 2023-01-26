@@ -19,10 +19,13 @@ return [
         '/register' => [[['_route' => 'app_register_page', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/verify/email' => [[['_route' => 'app_verify_email', '_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], null, null, null, false, false, null]],
         '/' => [
-            [['_route' => 'app_profile_page', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null],
+            [['_route' => 'app_home_page', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null],
             [['_route' => 'landing_index', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null],
         ],
         '/logout' => [[['_route' => 'app_logout_page', '_controller' => 'App\\Controller\\UserController::logout'], null, ['GET' => 0], null, false, false, null]],
+        '/profile' => [[['_route' => 'app_profile_page', '_controller' => 'App\\Controller\\UserController::profile'], null, null, null, false, false, null]],
+        '/cart' => [[['_route' => 'app_cart_page', '_controller' => 'App\\Controller\\UserController::cart'], null, null, null, false, false, null]],
+        '/wish' => [[['_route' => 'app_wish_page', '_controller' => 'App\\Controller\\UserController::wish'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

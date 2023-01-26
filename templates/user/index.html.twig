@@ -3,16 +3,223 @@
 {% block title %}Swoaper - login{% endblock %}
 
 {% block body %}
-    <div class="h-screen w-screen bg-landing-background flex flex-col justify-center items-center">
-        <div class="flex justify-center items-center mb-4">
-            <img class="w-auto h-10" src="{{ asset('build/logo.png') }}" alt="">
-        </div>
-        <div class="h-100 flex flex-nowrap flex-col w-100 justify-center items-center">
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <p class="mb-4">Email: {{ app.user.email }}</p>
+    <div class="w-full bg-white flex flex-col justify-center items-center">
+        <section class="w-full relative">
+            <video loop width="1920" height="1000" id="video-presentation" poster="{{ asset('build/video-wallpaper.jpg') }}" class="w-full h-video object-cover">
+                <source src="{{ asset('build/video-presentation.mp4') }}" type="video/mp4">
+            </video>
+            <button id="playBtn" onclick="togglePlayPause()" class="text-5xl text-white absolute inset-0">
+                <i id="play" class="fa-solid fa-play"></i>
+                <i id="pause" class="hidden fa-solid fa-pause text-opacity-25 hover:text-opacity-100"></i>
+            </button>
+        </section>
+        <section class="w-full flex justify-center flex-col p-20 bg-landing-background">
+            <div class="w-full flex justify-center items-center mb-20">
+                <img class="w-auto h-20" src="{{ asset('build/logo.png') }}" alt="logo"/>
+            </div>
+            <div class="w-full flex sm:flex-col lg:flex-row justify-evenly">
+                <p class="lg:w-1/2 sm:w-full sm:mb-4 font-medium text-xl px-10">
+                    En France, <span class="font-bold">9 paires</span> de chaussures sont jetées chaque minute, mais dans quel état ? <br><br>
+                    Les baskets sont de plus en plus coûteuses mais se <span class="font-bold">salissent toujours aussi vites</span> !
+                    Comment nettoyer ses baskets tout en tout en respectant les <span class="font-bold">matériaux</span>, quel type de <span class="font-bold">produit</span> doit-on utiliser ?
+                </p>
+                <p class="lg:w-1/2 sm:w-full font-medium text-xl pl-10 pr-5">
+                    <span class="font-bold">Swoaper</span> est là pour donner une <span class="font-bold">seconde vie</span> à tes baskets, avec toutes ses <span class="font-bold">connaissances</span> !
+                    Du <span class="font-bold">nettoyage complet</span> à de la <span class="font-bold">restauration</span>, on est là pour ça .
+                </p>
+            </div>
+        </section>
+        <section class="w-full flex justify-center flex-col py-20 border-b-2">
+            <div class="w-full flex justify-center items-center mb-20">
+                <h3 class="font-bold text-4xl  py-10">Prestations proposées</h3>
+            </div>
+            <div class="w-full flex lg:flex-row sm:flex-col justify-center lg:items-stretch sm:items-center mb-20">
+                <div class="flex justify-center lg:w-1/3 sm:w-full sm:mb-10 hover:scale-105 ease-out duration-300">
+                    <div class="flex flex-col rounded-lg bg-dark-blue shadow-lg w-full items-center">
+                        <div class="py-14 flex flex-row justify-evenly w-2/3">
+                            <div class="flex flex-col justify-start mr-4">
+                                <h5 class="text-white text-xl font-medium mb-2 text-3xl">Nettoyage</h5>
+                                <p class="text-white font-bold mb-4 text-2xl">
+                                    20€
+                                </p>
+                            </div>
 
-                <a href="{{ path('app_logout_page') }}" class="font-medium text-white bg-dark-blue px-3 py-2 drop-shadow-lg color-white rounded-lg">Déconnexion</a>
-            {% endif %}
-        </div>
+                            <i class="fa-solid fa-hand-sparkles text-5xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mx-10 lg:w-1/3 sm:w-full mx-10 sm:mb-10 hover:scale-105 ease-out duration-300">
+                    <div class="flex flex-col rounded-lg bg-dark-blue shadow-lg w-full items-center">
+                        <div class="py-14 flex flex-row justify-evenly w-2/3">
+                            <div class="flex flex-col justify-start mr-4">
+                                <h5 class="text-white text-xl font-medium mb-2 text-3xl">Déjaunissement</h5>
+                                <p class="text-white font-bold mb-4 text-2xl">
+                                    15€
+                                </p>
+                            </div>
+                            <i class="fa-solid fa-soap text-5xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:w-1/3 sm:w-full sm:mb-10 hover:scale-105 ease-out duration-300">
+                    <div class="flex flex-col rounded-lg bg-dark-blue shadow-lg w-full items-center">
+                        <div class="py-14 flex flex-row justify-evenly w-2/3">
+                            <div class="flex flex-col justify-start mr-4">
+                                <h5 class="text-white text-xl font-medium mb-2 text-3xl">Restauration peinture</h5>
+                                <p class="text-white font-bold mb-4 text-2xl">
+                                    Sur devis
+                                </p>
+                            </div>
+                            <i class="fa-solid fa-pump-soap text-5xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full flex justify-center items-center">
+                <a href="" class="flex flex-row justify-center items-center">
+                    <p class="mr-4 font-medium">En savoir plus</p>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+        </section>
+        <section class="w-full flex justify-center flex-col py-20">
+            <div class="w-full flex justify-center items-center mb-20">
+                <h3 class="font-bold text-4xl  py-10">Boutique</h3>
+            </div>
+            <div class="w-full flex flex-row flex-wrap justify-center items-center mb-20">
+                <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                    <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                        <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                        <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                        <p class="font-bold text-2xl mb-5">245 $</p>
+                    </div>
+                </div>
+                <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                    <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                        <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                        <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                        <p class="font-bold text-2xl mb-5">245 $</p>
+                    </div>
+                </div>
+                <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                    <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                        <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                        <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                        <p class="font-bold text-2xl mb-5">245 $</p>
+                    </div>
+                </div>
+                <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                    <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                        <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                        <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                        <p class="font-bold text-2xl mb-5">245 $</p>
+                    </div>
+                </div>
+                <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                    <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                        <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                        <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                        <p class="font-bold text-2xl mb-5">245 $</p>
+                    </div>
+                </div>
+                <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                    <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                        <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                        <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                        <p class="font-bold text-2xl mb-5">245 $</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full flex justify-center items-center">
+                <a href="" class="flex flex-row justify-center items-center">
+                    <p class="mr-4 font-medium">Voir plus</p>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+        </section>
+        <section class="w-full m-rates flex lg:flex-row sm:flex-col justify-center lg:items-stretch sm:items-center mb-20">
+            <div class="flex justify-center lg:w-1/3 sm:w-full sm:mb-10">
+                <div class="w-full flex flex-col w-full items-start justify-center home-rates">
+                    <div class="w-full py-5 flex flex-row justify-between">
+                            <h5 class="text-sm font-light text-light-blue">John H.</h5>
+                            <p class="text-sm font-light text-light-blue">
+                                19/12/2022
+                            </p>
+                    </div>
+                    <p class="mb-10 font-medium text-xl">I totally would recommend this shoes it is so ...</p>
+                    <div class="flex flex-row justify-start">
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star-half-stroke text-2xl"></i>
+                        <i class="fa-regular fa-star text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center lg:w-1/3 sm:w-full sm:mb-10">
+                <div class="w-full flex flex-col w-full items-start justify-center home-rates">
+                    <div class="w-full py-5 flex flex-row justify-between">
+                        <h5 class="text-sm font-light text-light-blue">John H.</h5>
+                        <p class="text-sm font-light text-light-blue">
+                            19/12/2022
+                        </p>
+                    </div>
+                    <p class="mb-10 font-medium text-xl">I totally would recommend this shoes it is so ...</p>
+                    <div class="flex flex-row justify-start">
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star-half-stroke text-2xl"></i>
+                        <i class="fa-regular fa-star text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center lg:w-1/3 sm:w-full sm:mb-10">
+                <div class="w-full flex flex-col w-full items-start justify-center home-rates">
+                    <div class="w-full py-5 flex flex-row justify-between">
+                        <h5 class="text-sm font-light text-light-blue">John H.</h5>
+                        <p class="text-sm font-light text-light-blue">
+                            19/12/2022
+                        </p>
+                    </div>
+                    <p class="mb-10 font-medium text-xl">I totally would recommend this shoes it is so ...</p>
+                    <div class="flex flex-row justify-start">
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star text-2xl"></i>
+                        <i class="fa-solid fa-star-half-stroke text-2xl"></i>
+                        <i class="fa-regular fa-star text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
+
+    <script>
+        function togglePlayPause() {
+            console.log("here")
+            let video = document.getElementById('video-presentation');
+            let play = document.getElementById('play');
+            let pause = document.getElementById('pause');
+            if (video.paused || video.ended) {
+                play.classList.add('hidden');
+                if(!pause.classList.contains('hidden')) {
+                    pause.classList.add('hidden');
+                } else {
+                    pause.classList.remove('hidden');
+                }
+                video.play();
+            }
+            else {
+                pause.classList.add('hidden');
+                if(!play.classList.contains('hidden')) {
+                    play.classList.add('hidden');
+                } else {
+                    play.classList.remove('hidden');
+                }
+                video.pause();
+            }
+        }
+    </script>
 {% endblock %}

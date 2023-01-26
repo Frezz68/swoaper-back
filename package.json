@@ -2,6 +2,7 @@
     "devDependencies": {
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
+        "@fortawesome/fontawesome-free": "^6.2.1",
         "@hotwired/stimulus": "^3.0.0",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/webpack-encore": "^4.0.0",
@@ -25,6 +26,7 @@
     "dependencies": {
         "@tailwindcss/forms": "^0.5.3",
         "autoprefixer": "^10.4.13",
+        "flowbite": "^1.6.3",
         "postcss": "^8.4.19",
         "postcss-loader": "^7.0.1",
         "tailwindcss": "^3.2.4"

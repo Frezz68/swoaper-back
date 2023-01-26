@@ -22,7 +22,7 @@ security:
                 enable_csrf: true
             logout:
                 path: app_logout_page
-                target: app_login_page
+                target: app_home_page
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

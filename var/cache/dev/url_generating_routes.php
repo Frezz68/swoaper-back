@@ -20,7 +20,10 @@ return [
     'app_login_page' => [[], ['_controller' => 'App\\Controller\\LoginController::index'], [], [['text', '/login']], [], [], []],
     'app_register_page' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_verify_email' => [[], ['_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], [], [['text', '/verify/email']], [], [], []],
-    'app_profile_page' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/']], [], [], []],
+    'app_home_page' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/']], [], [], []],
     'app_logout_page' => [[], ['_controller' => 'App\\Controller\\UserController::logout'], [], [['text', '/logout']], [], [], []],
+    'app_profile_page' => [[], ['_controller' => 'App\\Controller\\UserController::profile'], [], [['text', '/profile']], [], [], []],
+    'app_cart_page' => [[], ['_controller' => 'App\\Controller\\UserController::cart'], [], [['text', '/cart']], [], [], []],
+    'app_wish_page' => [[], ['_controller' => 'App\\Controller\\UserController::wish'], [], [['text', '/wish']], [], [], []],
     'landing_index' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/']], [], [], []],
 ];
