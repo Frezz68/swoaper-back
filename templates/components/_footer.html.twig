@@ -1,0 +1,34 @@
+{% block body %}
+    <footer class="w-full flex flex-col flex-nowrap justify-around items-center bg-landing-background">
+        <div class="w-full flex flex-row items-center justify-around my-10">
+            <ul class="m-0 flex flex-col justify-left items-start w-80">
+                <a href="{{ path('app_home_page') }}">
+                    <li class="font-medium text-lg underline">Mentions Légales</li>
+                </a>
+                <a href="{{ path('app_home_page') }}">
+                    <li class="font-medium text-lg underline">Conditions de nos offres</li>
+                </a>
+                <a href="{{ path('app_home_page') }}">
+                    <li class="font-medium text-lg underline">Politique de Confidentialité</li>
+                </a>
+            </ul>
+            <ul class="m-0 flex flex-col justify-left items-center w-80">
+                <a href="{{ path('app_home_page') }}">
+                    <li class="font-medium text-lg underline">CGU</li>
+                </a>
+                <a href="{{ path('app_home_page') }}">
+                    <li class="font-medium text-lg underline">CGV</li>
+                </a>
+            </ul>
+            <ul class="m-0 flex flex-col justify-center items-center w-80">
+                <a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@swoaper" class="hover:text-light-blue mb-5">
+                    <li class="font-medium text-lg"><i class="fa-brands fa-tiktok text-3xl"></i></li>
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/swoaper/" class="hover:text-light-blue">
+                    <li class="font-medium text-lg"><i class="fa-brands fa-instagram  text-3xl"></i></li>
+                </a>
+            </ul>
+        </div>
+        <p class="mb-5">© Swoaper. Tous droits réservés. Nantes, France</p>
+    </footer>
+{% endblock %}

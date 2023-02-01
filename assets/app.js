@@ -10,3 +10,7 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     let playBtn = document.querySelector("class");
+// });
