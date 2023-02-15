@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Swoaper{% endblock %}
+
+{% block body %}
+    <div class="w-full lg:w-8/12 bg-white flex flex-col justify-center items-center mb-40">
+        <div class="h-100 flex flex-nowrap flex-col w-100 justify-center items-center">
+                <img src="{{ asset('build/nettoyage.png') }}" alt="sneakers" class="w-auto h-[450px] mb-20 mt-40"/>
+                <div class="flex justify-center items-center"></div>
+                <p class="font-medium mb-8 w-100 lg:w-1/2 px-10 lg:px-0 text-center">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                <h4 class="text-3xl font-bold mb-8">Prix : 45.000.000,00 €</h4>
+                <button class="font-medium text-white text-xl bg-dark-blue px-5 py-4 w-60 drop-shadow-lg color-white rounded-lg">Ajouter au panier</button>
+        </div>
+    </div>
+{% endblock %}
