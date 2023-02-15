@@ -9,7 +9,7 @@
 .var
 .vendor
 .env
-.env-test
+.env.test
 ###< symfony/framework-bundle ###
 
 /.idea
