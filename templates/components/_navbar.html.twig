@@ -1,24 +1,23 @@
 {% block body %}
-    <nav class="w-full flex flex-row flex-nowrap justify-between items-center h-20 border-b-2">
-        <div class="flex justify-start items-center w-1/4">
+    <nav class="w-full flex flex-row flex-nowrap justify-between items-center h-20">
+        <div class="flex justify-end items-center w-1/4">
             <img class="w-auto h-10" src="{{ asset('build/logo.png') }}" alt="">
         </div>
         <ul class="m-0 flex flex-row justify-center items-center w-2/4">
             <a href="{{ path('app_home_page') }}">
-                <li class="font-bold text-lg mx-10 hover:border-b-4 border-black ease-out duration-100">Accueil</li>
+                <li class="font-bold text-lg mx-10 {% if app.request.get('_route') == 'app_home_page' %}border-b-4{% else %}hover:border-b-4{% endif %} border-black ease-out duration-100">Accueil</li>
+            </a>
+            <a href="{{ path('app_prestations_page') }}">
+                <li class="font-bold text-lg mx-10  {% if app.request.get('_route') == 'app_prestations_page' %}border-b-4{% else %}hover:border-b-4{% endif %}  border-black ease-out duration-100">Prestations</li>
             </a>
             <a href="{{ path('app_home_page') }}">
-                <li class="font-bold text-lg mx-10 hover:border-b-4 border-black ease-out duration-100">Prestations</li>
+                <li class="font-bold text-lg mx-10  {% if app.request.get('_route') == 'app_boutique_page' %}border-b-4{% else %}hover:border-b-4{% endif %} border-black ease-out duration-100">Boutique</li>
             </a>
             <a href="{{ path('app_home_page') }}">
-                <li class="font-bold text-lg mx-10 hover:border-b-4 border-black ease-out duration-100">Boutique</li>
-            </a>
-            <a href="{{ path('app_home_page') }}">
-                <li class="font-bold text-lg mx-10 hover:border-b-4 border-black ease-out duration-100">Contact</li>
+                <li class="font-bold text-lg mx-10  {% if app.request.get('_route') == 'app_contact_page' %}border-b-4{% else %}hover:border-b-4{% endif %}  border-black ease-out duration-100">Contact</li>
             </a>
         </ul>
-        <div class="flex justify-end items-center w-1/4">
-
+        <div class="flex justify-start items-center w-1/4">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a href="{{ path('app_wish_page') }}" class="mx-4">
                     <i class="fa-solid fa-heart"></i>

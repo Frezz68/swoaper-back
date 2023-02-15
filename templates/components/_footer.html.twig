@@ -1,6 +1,9 @@
 {% block body %}
-    <footer class="w-full flex flex-col flex-nowrap justify-around items-center bg-landing-background">
-        <div class="w-full flex flex-row items-center justify-around my-10">
+    <footer class="w-full flex flex-col flex-nowrap justify-around items-center bg-landing-background relative">
+        <div class="w-full flex justify-center items-center my-4 absolute top-[-60px]">
+            <img class="w-auto h-20" src="{{ asset('build/logo.png') }}" alt="logo"/>
+        </div>
+        <div class="w-full flex flex-row items-center justify-around my-14">
             <ul class="m-0 flex flex-col justify-left items-start w-80">
                 <a href="{{ path('app_home_page') }}">
                     <li class="font-medium text-lg underline">Mentions Légales</li>
