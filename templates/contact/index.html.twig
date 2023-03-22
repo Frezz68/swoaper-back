@@ -18,7 +18,7 @@
     }
 </style>
 <div class="w-full bg-white flex flex-col justify-center items-center">
-    <section class="w-full relative">
+    <section id="sectionVideo" class="w-full relative">
         <video loop width="auto" height="auto" id="video-presentation" poster="{{ asset('build/video-wallpaper2.jpg') }}" class="w-full h-[500px]">
             <source src="{{ asset('build/video-presentation.mp4') }}" type="video/mp4">
         </video>
@@ -69,11 +69,11 @@
     </section>
 
     <script>
+        let video = document.getElementById('video-presentation');
+        let play = document.getElementById('play');
+        let pause = document.getElementById('pause');
+
         function togglePlayPause() {
-            console.log("here")
-            let video = document.getElementById('video-presentation');
-            let play = document.getElementById('play');
-            let pause = document.getElementById('pause');
             if (video.paused || video.ended) {
                 play.classList.add('hidden');
                 if(!pause.classList.contains('hidden')) {
@@ -92,6 +92,7 @@
                 }
                 video.pause();
             }
+
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -129,6 +130,22 @@
                 var fileUpload = document.querySelector("input[type='file']");
                 if (fileUpload.files.length > 4) {
                     alert("Le nombre maximum d'images autorisé est 4.");
+                }
+            });
+
+            let sectionVideo = document.getElementById('sectionVideo');
+            sectionVideo.addEventListener('mouseenter', function() {
+                if(video.paused){
+                    play.classList.remove('hidden');
+                }else {
+                    pause.classList.remove('hidden');
+                }
+            });
+            sectionVideo.addEventListener('mouseleave', function() {
+                if(video.paused){
+                    play.classList.add('hidden');
+                }else {
+                    pause.classList.add('hidden');
                 }
             });
         });
