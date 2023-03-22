@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -56,6 +58,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
+
+    #[ORM\OneToMany(mappedBy: '_user', targetEntity: Fav::class)]
+    private Collection $Favoris;
+
+    #[ORM\OneToMany(mappedBy: '_user', targetEntity: Notice::class)]
+    private Collection $notices;
+
+    #[ORM\OneToOne(inversedBy: '_user', cascade: ['persist', 'remove'])]
+    private ?Cart $cart = null;
+
+    public function __construct()
+    {
+        $this->Favoris = new ArrayCollection();
+        $this->notices = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -265,5 +282,77 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setState(?string $state): void
     {
         $this->state = $state;
+    }
+
+    /**
+     * @return Collection<int, Fav>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->Favoris;
+    }
+
+    public function addFavori(Fav $favori): self
+    {
+        if (!$this->Favoris->contains($favori)) {
+            $this->Favoris->add($favori);
+            $favori->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Fav $favori): self
+    {
+        if ($this->Favoris->removeElement($favori)) {
+            // set the owning side to null (unless already changed)
+            if ($favori->getUser() === $this) {
+                $favori->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Notice>
+     */
+    public function getNotices(): Collection
+    {
+        return $this->notices;
+    }
+
+    public function addNotice(Notice $notice): self
+    {
+        if (!$this->notices->contains($notice)) {
+            $this->notices->add($notice);
+            $notice->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotice(Notice $notice): self
+    {
+        if ($this->notices->removeElement($notice)) {
+            // set the owning side to null (unless already changed)
+            if ($notice->getUser() === $this) {
+                $notice->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCart(): ?Cart
+    {
+        return $this->cart;
+    }
+
+    public function setCart(?Cart $cart): self
+    {
+        $this->cart = $cart;
+
+        return $this;
     }
 }

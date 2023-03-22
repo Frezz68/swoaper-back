@@ -19,6 +19,9 @@ class Filter
     #[ORM\Column]
     private array $mark = [];
 
+    #[ORM\ManyToOne(inversedBy: 'filters')]
+    private ?Product $product = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Filter
     public function setMark(array $mark): self
     {
         $this->mark = $mark;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

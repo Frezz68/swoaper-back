@@ -28,6 +28,9 @@ module.exports = {
       },
       margin: {
         "rates": "5rem",
+      },
+      padding: {
+        '100px': '100px',
       }
     },
   },

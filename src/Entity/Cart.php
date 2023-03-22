@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CartRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CartRepository::class)]
@@ -13,52 +15,104 @@ class Cart
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $idUser = null;
+    #[ORM\OneToOne(mappedBy: 'cart', cascade: ['persist', 'remove'])]
+    private ?User $_user = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $idService = null;
+    #[ORM\OneToMany(mappedBy: 'cart', targetEntity: Product::class)]
+    private Collection $products;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $idProduct = null;
+    #[ORM\OneToMany(mappedBy: 'cart', targetEntity: Service::class)]
+    private Collection $services;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+        $this->services = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdUser(): ?int
+    public function getUser(): ?User
     {
-        return $this->idUser;
+        return $this->_user;
     }
 
-    public function setIdUser(int $idUser): self
+    public function setUser(?User $_user): self
     {
-        $this->idUser = $idUser;
+        // unset the owning side of the relation if necessary
+        if ($_user === null && $this->_user !== null) {
+            $this->_user->setCart(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($_user !== null && $_user->getCart() !== $this) {
+            $_user->setCart($this);
+        }
+
+        $this->_user = $_user;
 
         return $this;
     }
 
-    public function getIdService(): ?int
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getProducts(): Collection
     {
-        return $this->idService;
+        return $this->products;
     }
 
-    public function setIdService(?int $idService): self
+    public function addProduct(Product $product): self
     {
-        $this->idService = $idService;
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setCart($this);
+        }
 
         return $this;
     }
 
-    public function getIdProduct(): ?int
+    public function removeProduct(Product $product): self
     {
-        return $this->idProduct;
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getCart() === $this) {
+                $product->setCart(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setIdProduct(?int $idProduct): self
+    /**
+     * @return Collection<int, Service>
+     */
+    public function getServices(): Collection
     {
-        $this->idProduct = $idProduct;
+        return $this->services;
+    }
+
+    public function addService(Service $service): self
+    {
+        if (!$this->services->contains($service)) {
+            $this->services->add($service);
+            $service->setCart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeService(Service $service): self
+    {
+        if ($this->services->removeElement($service)) {
+            // set the owning side to null (unless already changed)
+            if ($service->getCart() === $this) {
+                $service->setCart(null);
+            }
+        }
 
         return $this;
     }

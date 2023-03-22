@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Swoaper - boutique{% endblock %}
+
+{% block body %}
+    <div class="w-full bg-white flex flex-row justify-center items-center">
+        <section class="w-4/5 flex justify-center flex-col py-20">
+            <div class="w-full flex flex-row">
+            </div>
+            <div class="w-full flex flex-row">
+                <div class="w-2/6">
+                    <div class="w-full mt-4 mx-32">
+                        <p>filter 1</p>
+                        <p>filter 2</p>
+                        <p>filter 3</p>
+                        <p>filter 4</p>
+                    </div>
+                </div>
+                <div class="w-4/6">
+                    <div class="w-full flex flex-row flex-wrap justify-start items-center mb-20 pl-[100px]">
+                        <p>Trier par : </p>
+                        {{ form_start(groupByForm) }}
+                        {{ form_widget(groupByForm.groupBy, {'attr': {'class': 'border-0 outline-0 outline-none'}}) }}
+                        {{ form_end(groupByForm) }}
+                    </div>
+                    <div class="w-full flex flex-row flex-wrap justify-center items-center mb-20">
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <a href="{{ path('app_store_show_page') }}">
+                                <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                    <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                    <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                                    <p class="font-bold text-2xl mb-5">245 $</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                                <p class="font-bold text-2xl mb-5">245 $</p>
+                            </div>
+                        </div>
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                                <p class="font-bold text-2xl mb-5">245 $</p>
+                            </div>
+                        </div>
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                                <p class="font-bold text-2xl mb-5">245 $</p>
+                            </div>
+                        </div>
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                                <p class="font-bold text-2xl mb-5">245 $</p>
+                            </div>
+                        </div>
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
+                                <p class="font-bold text-2xl mb-5">245 $</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-center items-center">
+                        <a href="" class="flex flex-row justify-center items-center">
+                            <p class="mr-4 font-medium">Voir plus</p>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
