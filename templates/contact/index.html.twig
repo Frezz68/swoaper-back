@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous !{% endblock %}
+
+{% block body %}
+<style>
+    .holder {
+        position: absolute;
+        margin: 7px 8px;
+        color: rgb(107 114 128);
+        cursor: auto;
+        font-family: Helvetica;
+        font-size: 11pt;
+        z-index: 1;
+    }
+    .red{
+        color: red;
+    }
+</style>
+<div class="w-full bg-white flex flex-col justify-center items-center">
+    <section class="w-full relative">
+        <video loop width="auto" height="auto" id="video-presentation" poster="{{ asset('build/video-wallpaper2.jpg') }}" class="w-full h-[500px]">
+            <source src="{{ asset('build/video-presentation.mp4') }}" type="video/mp4">
+        </video>
+        <button id="playBtn" onclick="togglePlayPause()" class="text-5xl text-white absolute inset-0">
+            <i id="play" class="fa-solid fa-play"></i>
+            <i id="pause" class="hidden fa-solid fa-pause text-opacity-25 hover:text-opacity-100"></i>
+        </button>
+    </section>
+    <section>
+        <div class="w-full max-w-md space-y-8">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Contactez-nous !</h2>
+            </div>
+            <form class="mt-8 space-y-6" action="{{ path('app_login_page') }}" method="POST">
+                <div class="-space-y-px rounded-md shadow-sm">
+                    <span class="text-sm">Obligatoire <span class="red">*</span></span>
+                    <div>
+                        <label for="email-address" class="sr-only">Email <span style="color: red">*</span></label>
+                        <div class="holder">Email <span class="red">*</span></div>
+                        <input id="email-address" name="_email" type="email" value="" required class="relative mb-5 block w-full bg-[#DAE5EF] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message-object" class="sr-only">Objet *</label>
+                        <div class="holder">Objet <span class="red">*</span></div>
+                        <input id="message-object" name="_messageObject" type="text" required class="relative mb-5 block w-full bg-[#DAE5EF] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" >
+                    </div>
+                    <div>
+                        <label for="message-content" class="sr-only">Message *</label>
+                        <div class="holder">Message <span class="red">*</span></div>
+                        <textarea id="message-content" name="_msgContent" required class="relative mb-5 block w-full bg-[#DAE5EF] h-44 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" ></textarea>
+                    </div>
+                    <div>
+                        <label for="image-optional" class="sr-only">Image</label>
+                        <input id="image-optional" name="_imgOptional" type="file" accept="image/png, image/jpeg" multiple class="relative mb-5 block w-full bg-[#DAE5EF] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="_target_path" value="/">
+
+                <div class="flex justify-end items-center w-full">
+                    <button type="submit" class="px-3 py-2 bg-dark-blue text-white rounded rounded-sm rounded-lg">
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function togglePlayPause() {
+            console.log("here")
+            let video = document.getElementById('video-presentation');
+            let play = document.getElementById('play');
+            let pause = document.getElementById('pause');
+            if (video.paused || video.ended) {
+                play.classList.add('hidden');
+                if(!pause.classList.contains('hidden')) {
+                    pause.classList.add('hidden');
+                } else {
+                    pause.classList.remove('hidden');
+                }
+                video.play();
+            }
+            else {
+                pause.classList.add('hidden');
+                if(!play.classList.contains('hidden')) {
+                    play.classList.add('hidden');
+                } else {
+                    play.classList.remove('hidden');
+                }
+                video.pause();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let inputs = document.querySelectorAll('.holder + input');
+            let holders = document.querySelectorAll('.holder');
+            let textarea = document.querySelector('.holder + textarea');
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('keyup', function() {
+                    var holder = this.previousElementSibling;
+                    if (this.value.length) {
+                        holder.style.display = 'none';
+                    } else {
+                        holder.style.display = 'block';
+                    }
+                });
+            }
+            textarea.addEventListener('keyup', function() {
+                var holder = this.previousElementSibling;
+                if (this.value.length) {
+                    holder.style.display = 'none';
+                } else {
+                    holder.style.display = 'block';
+                }
+            });
+
+            for (var i = 0; i < holders.length; i++) {
+                holders[i].addEventListener('click', function() {
+                    this.nextElementSibling.focus();
+                });
+            }
+
+            var submitBtn = document.querySelector("button[type='submit']");
+            submitBtn.addEventListener('click', function() {
+                var fileUpload = document.querySelector("input[type='file']");
+                if (fileUpload.files.length > 4) {
+                    alert("Le nombre maximum d'images autorisé est 4.");
+                }
+            });
+        });
+    </script>
+{% endblock %}
