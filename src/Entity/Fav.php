@@ -13,37 +13,37 @@ class Fav
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $idUser = null;
+    #[ORM\ManyToOne(inversedBy: 'favoris')]
+    private ?User $_user = null;
 
-    #[ORM\Column]
-    private ?int $idProduct = null;
+    #[ORM\ManyToOne(inversedBy: 'favoris')]
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdUser(): ?int
+    public function getUser(): ?User
     {
-        return $this->idUser;
+        return $this->_user;
     }
 
-    public function setIdUser(int $idUser): self
+    public function setUser(?User $_user): self
     {
-        $this->idUser = $idUser;
+        $this->_user = $_user;
 
         return $this;
     }
 
-    public function getIdProduct(): ?int
+    public function getProduct(): ?Product
     {
-        return $this->idProduct;
+        return $this->product;
     }
 
-    public function setIdProduct(int $idProduct): self
+    public function setProduct(?Product $product): self
     {
-        $this->idProduct = $idProduct;
+        $this->product = $product;
 
         return $this;
     }

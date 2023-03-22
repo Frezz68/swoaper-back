@@ -19,14 +19,14 @@ class Notice
     #[ORM\Column(length: 255)]
     private ?string $comment = null;
 
-    #[ORM\Column]
-    private ?int $idUser = null;
+    #[ORM\ManyToOne(inversedBy: 'notices')]
+    private ?User $_user = null;
 
-    #[ORM\Column]
-    private ?int $idService = null;
+    #[ORM\ManyToOne(inversedBy: 'notices')]
+    private ?Product $product = null;
 
-    #[ORM\Column]
-    private ?int $idProduct = null;
+    #[ORM\ManyToOne(inversedBy: 'notices')]
+    private ?Service $service = null;
 
     public function getId(): ?int
     {
@@ -57,38 +57,38 @@ class Notice
         return $this;
     }
 
-    public function getIdUser(): ?int
+    public function getUser(): ?User
     {
-        return $this->idUser;
+        return $this->_user;
     }
 
-    public function setIdUser(int $idUser): self
+    public function setUser(?User $_user): self
     {
-        $this->idUser = $idUser;
+        $this->_user = $_user;
 
         return $this;
     }
 
-    public function getIdService(): ?int
+    public function getProduct(): ?Product
     {
-        return $this->idService;
+        return $this->product;
     }
 
-    public function setIdService(int $idService): self
+    public function setProduct(?Product $product): self
     {
-        $this->idService = $idService;
+        $this->product = $product;
 
         return $this;
     }
 
-    public function getIdProduct(): ?int
+    public function getService(): ?Service
     {
-        return $this->idProduct;
+        return $this->service;
     }
 
-    public function setIdProduct(int $idProduct): self
+    public function setService(?Service $service): self
     {
-        $this->idProduct = $idProduct;
+        $this->service = $service;
 
         return $this;
     }
