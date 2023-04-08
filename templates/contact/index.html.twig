@@ -100,7 +100,7 @@
             let holders = document.querySelectorAll('.holder');
             let textarea = document.querySelector('.holder + textarea');
 
-            for (var i = 0; i < inputs.length; i++) {
+            for (let i = 0; i < inputs.length; i++) {
                 inputs[i].addEventListener('keyup', function() {
                     var holder = this.previousElementSibling;
                     if (this.value.length) {
