@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="w-12/12 bg-white flex flex-col justify-center items-center">
-        <section class="w-11/12 relative mt-24 mb-24">
+        <section class="w-11/12 relative mt-24 mb-24" id="sectionVideo">
             <video loop width="1920" height="1080" id="video-presentation" poster="{{ asset('build/video-wallpaper.jpg') }}" class="w-full h-[500px] object-cover">
                 <source src="{{ asset('build/video-presentation.mp4') }}" type="video/mp4">
             </video>
@@ -216,12 +216,12 @@
         -->
     </div>
 
-
     <script>
+        let video = document.getElementById('video-presentation');
+        let play = document.getElementById('play');
+        let pause = document.getElementById('pause');
+
         function togglePlayPause() {
-            let video = document.getElementById('video-presentation');
-            let play = document.getElementById('play');
-            let pause = document.getElementById('pause');
             if (video.paused || video.ended) {
                 play.classList.add('hidden');
                 video.classList.remove('h-[500px]');
@@ -242,6 +242,25 @@
                 }
                 video.pause();
             }
+
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let sectionVideo = document.getElementById('sectionVideo');
+            sectionVideo.addEventListener('mouseenter', function() {
+                if(video.paused){
+                    play.classList.remove('hidden');
+                }else {
+                    pause.classList.remove('hidden');
+                }
+            });
+            sectionVideo.addEventListener('mouseleave', function() {
+                if(video.paused){
+                    play.classList.add('hidden');
+                }else {
+                    pause.classList.add('hidden');
+                }
+            });
+        });
     </script>
 {% endblock %}
