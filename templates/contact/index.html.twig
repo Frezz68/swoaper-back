@@ -18,7 +18,7 @@
     }
 </style>
 <div class="w-full bg-white flex flex-col justify-center items-center">
-    <section id="sectionVideo" class="w-full relative">
+    <!--<section id="sectionVideo" class="w-full relative">
         <video loop width="auto" height="auto" id="video-presentation" poster="{{ asset('build/video-wallpaper2.jpg') }}" class="w-full h-[500px]">
             <source src="{{ asset('build/video-presentation.mp4') }}" type="video/mp4">
         </video>
@@ -26,9 +26,20 @@
             <i id="play" class="fa-solid fa-play"></i>
             <i id="pause" class="hidden fa-solid fa-pause text-opacity-25 hover:text-opacity-100"></i>
         </button>
-    </section>
+    </section>-->
     <section>
-        <div class="w-full max-w-md space-y-8">
+        <!-- Carte pour afficher les blocs à venir sur la v1 du site -->
+        <div class="w-full flex justify-center items-center" id="card-coming-soon">
+            <div class="max-w-sm p-6 bg-white shadow-xl rounded-lg  flex justify-center items-center flex-col">
+                <svg class="w-14 h-14 mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#253784" d="M208 64a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM9.8 214.8c5.1-12.2 19.1-18 31.4-12.9L60.7 210l22.9-38.1C99.9 144.6 129.3 128 161 128c51.4 0 97 32.9 113.3 81.7l34.6 103.7 79.3 33.1 34.2-45.6c6.4-8.5 16.6-13.3 27.2-12.8s20.3 6.4 25.8 15.5l96 160c5.9 9.9 6.1 22.2 .4 32.2s-16.3 16.2-27.8 16.2H288c-11.1 0-21.4-5.7-27.2-15.2s-6.4-21.2-1.4-31.1l16-32c5.4-10.8 16.5-17.7 28.6-17.7h32l22.5-30L22.8 246.2c-12.2-5.1-18-19.1-12.9-31.4zm82.8 91.8l112 48c11.8 5 19.4 16.6 19.4 29.4v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V405.1l-60.6-26-37 111c-5.6 16.8-23.7 25.8-40.5 20.2S-3.9 486.6 1.6 469.9l48-144 11-33 32 13.7z"/></svg>
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">Coming soon</h5>
+                <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 mb-10">Feature en cours de développement !</p>
+                <div class="w-full flex justify-center">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/swoaper/" class="border-4 border-gray-blue text-gray-600 font-bold py-2 px-4 rounded-lg hover:border-light-blue hover:text-light-blue ease-out duration-100">Instagram</a>
+                </div>
+            </div>
+        </div>
+    <!--<div class="w-full max-w-md space-y-8">
             <div>
                 <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Contactez-nous !</h2>
             </div>
@@ -65,7 +76,7 @@
                     </button>
                 </div>
             </form>
-        </div>
+        </div>-->
     </section>
 
     <script>
