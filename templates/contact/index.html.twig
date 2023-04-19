@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous !{% endblock %}
+
+{% block body %}
+<style>
+    .holder {
+        position: absolute;
+        margin: 7px 8px;
+        color: rgb(107 114 128);
+        cursor: auto;
+        font-family: Helvetica;
+        font-size: 11pt;
+        z-index: 1;
+    }
+    .red{
+        color: red;
+    }
+</style>
+<div class="w-full bg-white flex flex-col justify-center items-center">
+    <!--<section id="sectionVideo" class="w-full relative">
+        <video loop width="auto" height="auto" id="video-presentation" poster="{{ asset('build/video-wallpaper2.jpg') }}" class="w-full h-[500px]">
+            <source src="{{ asset('build/video-presentation.mp4') }}" type="video/mp4">
+        </video>
+        <button id="playBtn" onclick="togglePlayPause()" class="text-5xl text-white absolute inset-0">
+            <i id="play" class="fa-solid fa-play"></i>
+            <i id="pause" class="hidden fa-solid fa-pause text-opacity-25 hover:text-opacity-100"></i>
+        </button>
+    </section>-->
+    <section>
+        <!-- Carte pour afficher les blocs à venir sur la v1 du site -->
+        <div class="w-full flex justify-center items-center" id="card-coming-soon">
+            <div class="max-w-sm p-6 bg-white shadow-xl rounded-lg  flex justify-center items-center flex-col">
+                <svg class="w-14 h-14 mb-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#253784" d="M208 64a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM9.8 214.8c5.1-12.2 19.1-18 31.4-12.9L60.7 210l22.9-38.1C99.9 144.6 129.3 128 161 128c51.4 0 97 32.9 113.3 81.7l34.6 103.7 79.3 33.1 34.2-45.6c6.4-8.5 16.6-13.3 27.2-12.8s20.3 6.4 25.8 15.5l96 160c5.9 9.9 6.1 22.2 .4 32.2s-16.3 16.2-27.8 16.2H288c-11.1 0-21.4-5.7-27.2-15.2s-6.4-21.2-1.4-31.1l16-32c5.4-10.8 16.5-17.7 28.6-17.7h32l22.5-30L22.8 246.2c-12.2-5.1-18-19.1-12.9-31.4zm82.8 91.8l112 48c11.8 5 19.4 16.6 19.4 29.4v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V405.1l-60.6-26-37 111c-5.6 16.8-23.7 25.8-40.5 20.2S-3.9 486.6 1.6 469.9l48-144 11-33 32 13.7z"/></svg>
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white text-center">Coming soon</h5>
+                <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 mb-10">Feature en cours de développement !</p>
+                <div class="w-full flex justify-center">
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/swoaper/" class="border-4 border-gray-blue text-gray-600 font-bold py-2 px-4 rounded-lg hover:border-light-blue hover:text-light-blue ease-out duration-100">Instagram</a>
+                </div>
+            </div>
+        </div>
+    <!--<div class="w-full max-w-md space-y-8">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Contactez-nous !</h2>
+            </div>
+            <form class="mt-8 space-y-6" action="{{ path('app_login_page') }}" method="POST">
+                <div class="-space-y-px rounded-md shadow-sm">
+                    <span class="text-sm">Obligatoire <span class="red">*</span></span>
+                    <div>
+                        <label for="email-address" class="sr-only">Email <span style="color: red">*</span></label>
+                        <div class="holder">Email <span class="red">*</span></div>
+                        <input id="email-address" name="_email" type="email" value="" required class="relative mb-5 block w-full bg-[#DAE5EF] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message-object" class="sr-only">Objet *</label>
+                        <div class="holder">Objet <span class="red">*</span></div>
+                        <input id="message-object" name="_messageObject" type="text" required class="relative mb-5 block w-full bg-[#DAE5EF] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" >
+                    </div>
+                    <div>
+                        <label for="message-content" class="sr-only">Message *</label>
+                        <div class="holder">Message <span class="red">*</span></div>
+                        <textarea id="message-content" name="_msgContent" required class="relative mb-5 block w-full bg-[#DAE5EF] h-44 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" ></textarea>
+                    </div>
+                    <div>
+                        <label for="image-optional" class="sr-only">Image</label>
+                        <input id="image-optional" name="_imgOptional" type="file" accept="image/png, image/jpeg" multiple class="relative mb-5 block w-full bg-[#DAE5EF] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="_target_path" value="/">
+
+                <div class="flex justify-end items-center w-full">
+                    <button type="submit" class="px-3 py-2 bg-dark-blue text-white rounded rounded-sm rounded-lg">
+                        Envoyer
+                    </button>
+                </div>
+            </form>
+        </div>-->
+    </section>
+
+    <script>
+        let video = document.getElementById('video-presentation');
+        let play = document.getElementById('play');
+        let pause = document.getElementById('pause');
+
+        function togglePlayPause() {
+            if (video.paused || video.ended) {
+                play.classList.add('hidden');
+                if(!pause.classList.contains('hidden')) {
+                    pause.classList.add('hidden');
+                } else {
+                    pause.classList.remove('hidden');
+                }
+                video.play();
+            }
+            else {
+                pause.classList.add('hidden');
+                if(!play.classList.contains('hidden')) {
+                    play.classList.add('hidden');
+                } else {
+                    play.classList.remove('hidden');
+                }
+                video.pause();
+            }
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let inputs = document.querySelectorAll('.holder + input');
+            let holders = document.querySelectorAll('.holder');
+            let textarea = document.querySelector('.holder + textarea');
+
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('keyup', function() {
+                    var holder = this.previousElementSibling;
+                    if (this.value.length) {
+                        holder.style.display = 'none';
+                    } else {
+                        holder.style.display = 'block';
+                    }
+                });
+            }
+            textarea.addEventListener('keyup', function() {
+                var holder = this.previousElementSibling;
+                if (this.value.length) {
+                    holder.style.display = 'none';
+                } else {
+                    holder.style.display = 'block';
+                }
+            });
+
+            for (var i = 0; i < holders.length; i++) {
+                holders[i].addEventListener('click', function() {
+                    this.nextElementSibling.focus();
+                });
+            }
+
+            var submitBtn = document.querySelector("button[type='submit']");
+            submitBtn.addEventListener('click', function() {
+                var fileUpload = document.querySelector("input[type='file']");
+                if (fileUpload.files.length > 4) {
+                    alert("Le nombre maximum d'images autorisé est 4.");
+                }
+            });
+
+            let sectionVideo = document.getElementById('sectionVideo');
+            sectionVideo.addEventListener('mouseenter', function() {
+                if(video.paused){
+                    play.classList.remove('hidden');
+                }else {
+                    pause.classList.remove('hidden');
+                }
+            });
+            sectionVideo.addEventListener('mouseleave', function() {
+                if(video.paused){
+                    play.classList.add('hidden');
+                }else {
+                    pause.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+{% endblock %}
