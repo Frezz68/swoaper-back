@@ -1,7 +1,9 @@
 {% block body %}
     <nav class="w-full flex flex-row flex-nowrap justify-between items-center h-20">
         <div class="flex justify-end items-center w-1/4">
-            <img class="w-auto h-10" src="{{ asset('build/logo.png') }}" alt="">
+            <a href="{{ path('app_home_page') }}">
+                <img class="w-auto h-10" src="{{ asset('build/logo.png') }}" alt="">
+            </a>
         </div>
         <ul class="m-0 flex flex-row justify-center items-center w-2/4">
             <a href="{{ path('app_home_page') }}">
@@ -10,7 +12,7 @@
             <a href="{{ path('app_prestations_page') }}">
                 <li class="font-bold text-lg mx-10  {% if app.request.get('_route') == 'app_prestations_page' %}border-b-4{% else %}hover:border-b-4{% endif %}  border-black ease-out duration-100">Prestations</li>
             </a>
-            <a href="{{ path('app_store_page') }}">
+            <a href="{{ path('app_store_index') }}">
                 <li class="font-bold text-lg mx-10  {% if app.request.get('_route') == 'app_store_page' %}border-b-4{% else %}hover:border-b-4{% endif %} border-black ease-out duration-100">Boutique</li>
             </a>
             <a href="{{ path('app_home_page') }}">
@@ -19,7 +21,7 @@
         </ul>
         <div class="flex justify-start items-center w-1/4">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a href="{{ path('app_wish_page') }}" class="mx-4">
+                <a href="{{ path('app_wish_index') }}" class="mx-4">
                     <i class="fa-solid fa-heart"></i>
                 </a>
                 <a href="{{ path('app_cart_page') }}" class="mx-4">
@@ -28,7 +30,6 @@
                 <a href="{{ path('app_profile_page') }}" class="mx-4">
                     <i class="fa-solid fa-user text-xl"></i>
                 </a>
-            {% else %}
                 <a href="{{ path('app_login_page') }}" class="mx-4">
                     <i class="fa-solid fa-user text-xl"></i>
                 </a>

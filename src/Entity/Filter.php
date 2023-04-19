@@ -10,13 +10,13 @@ class Filter
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private array $filterSize = [];
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private array $mark = [];
 
     #[ORM\ManyToOne(inversedBy: 'filters')]

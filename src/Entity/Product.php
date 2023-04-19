@@ -7,31 +7,66 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[Vich\Uploadable]
 class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?float $price = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $productName = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $about = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $pathToImage = null;
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $images = [];
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName2 = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName3 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName4 = null;
+
+    #[UploadableField(mapping:"product_images", fileNameProperty:"imageName")]
+    private ?File $imageFile = null;
+
+    #[UploadableField(mapping:"product_images", fileNameProperty:"imageName2")]
+    private ?File $imageFile2 = null;
+
+    #[UploadableField(mapping:"product_images", fileNameProperty:"imageName3")]
+    private ?File $imageFile3 = null;
+
+    #[UploadableField(mapping:"product_images", fileNameProperty:"imageName4")]
+    private ?File $imageFile4 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt2 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt3 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt4 = null;
+
+    #[ORM\Column(nullable: true)]
     private ?float $size = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Fav::class)]
@@ -94,28 +129,112 @@ class Product
         return $this;
     }
 
-    public function getPathToImage(): ?string
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
     {
-        return $this->pathToImage;
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
-    public function setPathToImage(string $pathToImage): self
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile2
+     */
+    public function setImageFile2(?File $imageFile2 = null): void
     {
-        $this->pathToImage = $pathToImage;
+        $this->imageFile2 = $imageFile2;
 
-        return $this;
+        if (null !== $imageFile2) {
+            $this->updatedAt2 = new \DateTimeImmutable();
+        }
     }
 
-    public function getImages(): array
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile3
+     */
+    public function setImageFile3(?File $imageFile3 = null): void
     {
-        return $this->images;
+        $this->imageFile3 = $imageFile3;
+
+        if (null !== $imageFile3) {
+            $this->updatedAt3 = new \DateTimeImmutable();
+        }
     }
 
-    public function setImages(array $images): self
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile4
+     */
+    public function setImageFile4(?File $imageFile4 = null): void
     {
-        $this->images = $images;
+        $this->imageFile4 = $imageFile4;
 
-        return $this;
+        if (null !== $imageFile4) {
+            $this->updatedAt4 = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getImageFile2(): ?File
+    {
+        return $this->imageFile2;
+    }
+
+    public function getImageFile3(): ?File
+    {
+        return $this->imageFile3;
+    }
+
+    public function getImageFile4(): ?File
+    {
+        return $this->imageFile4;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function setImageName2(?string $imageName2): void
+    {
+        $this->imageName2 = $imageName2;
+    }
+
+    public function setImageName3(?string $imageName3): void
+    {
+        $this->imageName3 = $imageName3;
+    }
+
+    public function setImageName4(?string $imageName4): void
+    {
+        $this->imageName4 = $imageName4;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function getImageName2(): ?string
+    {
+        return $this->imageName2;
+    }
+
+    public function getImageName3(): ?string
+    {
+        return $this->imageName3;
+    }
+
+    public function getImageName4(): ?string
+    {
+        return $this->imageName4;
     }
 
     public function getSize(): ?float

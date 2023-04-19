@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Swoaper - favoris{% endblock %}
+
+{% block body %}
+
+    <div class="w-full bg-white flex flex-row justify-center items-center">
+        <section class="w-4/5 flex justify-center flex-col py-20">
+            <div class="w-full flex flex-row">
+            </div>
+            <div class="w-full flex flex-row">
+                <div class="w-full flex flex-row flex-wrap justify-center items-center mb-20">
+                    {% for product in products %}
+                        <div class="w-1/4 m-5 hover:scale-105 ease-out duration-300">
+                            <a href="{{ path('app_store_show', {'id': product.id}) }}">
+                                <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
+                                    {#
+                                    <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
+                                    #}
+                                    <h3 class="text-xl font-medium mb-2 text-3xl">{{ product.productName }}</h3>
+                                    <p class="font-bold text-2xl mb-5">{{ product.price }} $</p>
+                                </div>
+                            </a>
+                            {#
+                            <a href="{{ path('app_store_edit', {'id': product.id}) }}">edit</a>
+                            #}
+                        </div>
+                    {% else %}
+                        <span>Aucune paire en vente actuellement</span>
+                    {% endfor %}
+                    <div class="w-full flex justify-center items-center">
+                        <a href="" class="flex flex-row justify-center items-center">
+                            <p class="mr-4 font-medium">Voir plus</p>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

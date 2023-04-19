@@ -12,6 +12,7 @@ class LoginController extends AbstractController
     #[Route('/login', name: 'app_login_page')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 

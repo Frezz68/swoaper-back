@@ -1,44 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Swoaper{% endblock %}
+{% block title %}Product{% endblock %}
 
 {% block body %}
-    <div class="w-full bg-white flex flex-row justify-center items-center">
-        <div class="w-4/5 grid grid-cols-12">
-            <div class="col-span-8">
-                <div class="flex flex-col">
-                    <h3>Jordan 1 - Retro High Satin Black Toe </h3>
-                    <img src="{{ asset('build/j1.png') }}" alt="sneakers" class="w-auto h-[450px] mb-20 mt-40"/>
-                    <div class="flex flex-row flex-nowrap">
-                        <div class="m-5 hover:scale-105 ease-out duration-300">
-                            <a href="{{ path('app_store_show_page') }}">
-                                <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
-                                    <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
-                                    <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
-                                    <p class="font-bold text-2xl mb-5">245 $</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="m-5 hover:scale-105 ease-out duration-300">
-                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
-                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
-                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
-                                <p class="font-bold text-2xl mb-5">245 $</p>
-                            </div>
-                        </div>
-                        <div class="m-5 hover:scale-105 ease-out duration-300">
-                            <div class="border-2 border-gray-blue rounded-lg px-10 py-5">
-                                <img src="{{ asset('build/j1.png') }}" alt="sneakers"/>
-                                <h3 class="text-xl font-medium mb-2 text-3xl">Air max au MAX 245 $</h3>
-                                <p class="font-bold text-2xl mb-5">245 $</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-span-4">
+    <h1>Product</h1>
 
-            </div>
-        </div>
-    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>ProductName</th>
+                <td>{{ product.productName }}</td>
+            </tr>
+            <tr>
+                <th>About</th>
+                <td>{{ product.about }}</td>
+            </tr>
+            <tr>
+                <th>Image 1</th>
+                <td>{{ product.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Image 1</th>
+            <td>{{ product.imageName2 }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ product.size }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_store_index') }}">back to list</a>
+
+    <a href="{{ path('app_store_edit', {'id': product.id}) }}">edit</a>
+
+    {{ include('product/_delete_form.html.twig') }}
 {% endblock %}
