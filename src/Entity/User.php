@@ -17,19 +17,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
+    #[ORM\Column(length: 180, unique: true, nullable: true)]
     private ?string $email = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private array $roles = ['ROLE_USER'];
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $first_name = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?string $last_name = null;
 
     #[ORM\Column(nullable: true)]

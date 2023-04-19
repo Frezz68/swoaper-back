@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+    {{ form_widget(form.productName) }}
+    {{ form_errors(form.productName) }}
+    {{ form_widget(form.about) }}
+    {{ form_errors(form.about) }}
+    {{ form_widget(form.price) }}
+    {{ form_errors(form.price) }}
+    {{ form_widget(form.size) }}
+    {{ form_errors(form.size) }}
+    {{ form_widget(form.imageFile) }}
+    {{ form_errors(form.imageFile) }}
+    {{ form_widget(form.imageFile2) }}
+    {{ form_errors(form.imageFile2) }}
+    {{ form_widget(form.imageFile3) }}
+    {{ form_errors(form.imageFile3) }}
+    {{ form_widget(form.imageFile4) }}
+    {{ form_errors(form.imageFile4) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

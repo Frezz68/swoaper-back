@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StoreController extends AbstractController
 {
-    #[Route('/store', name: 'app_store_page')]
+/*    #[Route('/store', name: 'app_store_page')]
     public function index(): Response
     {
         $form = $this->createForm(GroupByFormType::class);
@@ -26,6 +26,6 @@ class StoreController extends AbstractController
         return $this->render('store/show.html.twig', [
             'controller_name' => 'StoreController',
         ]);
-    }
+    }*/
 
 }

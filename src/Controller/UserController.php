@@ -39,12 +39,4 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/wish', name: 'app_wish_page')]
-    public function wish(): Response
-    {
-        return $this->render('user/wish.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
 }

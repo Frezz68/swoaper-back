@@ -12,7 +12,7 @@ class Cart
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $id = null;
 
     #[ORM\OneToOne(mappedBy: 'cart', cascade: ['persist', 'remove'])]
