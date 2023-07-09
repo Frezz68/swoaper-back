@@ -79,7 +79,7 @@ services:
 
   nginx:
     container_name: swoaper-proxy
-    image: nginx:alpine
+    image: nginx:latest
     restart: always
     volumes:
       - .:/var/www/html
